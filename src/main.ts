@@ -53,8 +53,8 @@ console.log('x is ', x)
 console.log('y is ', y)
 
 let z: string
-z = '37' - 7 //subtraction is math
-console.log('subtraction', z)
+//z = '37' - 7 //subtraction is math
+//console.log('subtraction', z)
 z = '37' + 7 //addition is concatenation
 console.log('addition', z)
 //TypeScript seems inconsistent
@@ -182,6 +182,7 @@ const theirCar: Car = {
   model: 'Mustang',
   year: 2024,
 }
+console.log(theirCar)
 //This car has the same type as myCar variable, but only through coincidence
 
 //myCar = {make: 'Tesla', model: '3', year: '2018 } //this is illegal because myCar is a const, the properties of myCar are not const
@@ -220,6 +221,7 @@ const myOtherCar2: Car = {
   model: myCar2.model,
   year: 2024,
 }
+console.log(myOtherCar2)
 //what if we wanted to change one of the properties of myOtherCar2
 //Typescript allows for a shortcut that expands all the keys and values of an object
 //this is called the spread operator
@@ -443,5 +445,172 @@ switch (fruittype) {
     console.log('Sorry, we are out of ' + fruittype + '.')
 }
 console.log("Is there anything else you'd like?")
+*/
+
+/* ********** FUNCTIONS *********
+
+A function is a group of reusable code which can be called anywhere in your program.
+
+A function definition (also called a function declaration or function statement) consists of the function keyword, followed by:
+
+The name of the function.
+A list of parameters to the function, enclosed in parentheses and separated by commas.
+The TypeScript statements that define the function, enclosed in curly brackets, { }.
+For example, the following code defines a simple function named greet:
+
+function greet(){
+  console.log("Hello World");
+}
+
+function greet(name){
+  console.log("Hello " + name);
+}
+*/
+
+// function keyword
+// |
+// |     name of the function
+// |     |
+// |     |    required parenthesis where arguments will go
+// |     |    |
+// |     |    |  opening scope of the function
+// |     |    |  |
+// |     |    |  |
+// v     v    v  v
+function greet() {
+  console.log('Hello, there programmer!')
+}
+// to call a function, you use the name of the function followed by parenthesis
+greet()
+
+function greetName(name: string) {
+  console.log('Hello ' + name)
+}
+greetName('Mila')
+
+//Functions can have parameters and return values
+//Parameters are the names listed in the function definition.
+//Arguments are the values passed to the function when it is invoked.
+//The following function has two parameters, name and age:
+
+function greetNameAndAge(name: string, age: number) {
+  console.log('Hello ' + name + ' you are ' + age + ' years old.')
+}
+greetNameAndAge('Mila', 4)
+
+//Return Values
+//When JavaScript reaches a return statement, the function will stop executing.
+//If the function was invoked from a statement, JavaScript will "return" to execute the code after the invoking
+//statement.
+//Functions often compute a return value. The return value is "returned" back to the "caller":
+
+function square(valueToSquare: number) {
+  return valueToSquare * valueToSquare
+}
+// square(4)
+console.log(square(4))
+
+//The result of the function is written to the console with console.log(square(4)).
+
+/*
+Notice that we must supply a value to the valueToSquare argument, otherwise, TypeScript will assume that 
+the variable is of type any and, we'll lose any help the language will provide.
+
+Also, notice that we have not declared the type of data the function returns. 
+This is because TypeScript can also infer the type from the return statement.
+
+We can also define the return type on the function declaration here:*/
+
+//                             argument type
+//                             |
+//                             |        function return type
+//                             |        |
+//                             |        |
+//                             v        v
+function squareIt(valueToSquare: number): number {
+  return valueToSquare * valueToSquare
+}
+/*Defining a function does not execute it. Defining the function simply names the function and specifies what 
+to do when the function is called. Calling the function performs the specified actions with the indicated 
+parameters. For example, if you define the function square, you could call it as follows: */
+squareIt(4)
+// The preceding statement calls the function with an argument of 5.
+//The function executes its statements and returns the value 25.
+
+// What if we attempt to pass a value that is not a number, such as:
+
+//squareIt('four')
+//In this case, TypeScript will tell us this is an error.
+//However, if we have not configured our tools to not launch our site,
+//or code, in the case of a TypeScript error, the code will still run. Most of the tools we use
+//will put this error directly in our path so, we must resolve it.
+
+//Function expressions
+
+/*While the function declaration above is syntactically a statement, functions can also be created by a 
+function expression. Such a function can be anonymous; it does not have to have a name. 
+For example, the function square could have been defined as: 
+*/
+const squareItAgain = function (valueToSquare: number) {
+  return valueToSquare * valueToSquare
+}
+const n = squareItAgain(4) // n gets the value 16
+console.log(n)
+
+//look for more examples of Typescript anonymous functions in the MDN documentation and online
+
+//Functions are values of variables
+
+/*
+Notice in the example above that we can assign a function to a variable just like we assign a number 
+or a string or any other kind of value.
+
+In fact, in TypeScript, functions are values themselves and can be passed to functions just like any 
+other value.
+
+However, like any other argument in TypeScript, we should supply a type! Since our argument, 
+func will be a function that receives a number and returns a number, we define that type like:
+
+(value: number) => number
 
 */
+
+//The declaration uses arrow style to define the function type. The arrow style is a TypeScript shorthand
+//for defining functions. It is also called a lambda expression.
+
+//We can now use this type to define our function:
+
+function applyIt(value: number, func: (value: number) => number) {
+  return func(value)
+}
+//We can now call this function with any function that matches the type:
+
+applyIt(4, squareItAgain)
+//We can also define the function inline:
+
+applyIt(4, function (value) {
+  return value * value
+})
+//We can also use the arrow style to define the function inline:
+
+applyIt(4, (value) => value * value)
+//This is a very common pattern in TypeScript and JavaScript.
+
+function printIt(numbers: number[], func: (value: number) => number) {
+  for (const num of numbers) {
+    console.log('PrintIt', func(num))
+  }
+}
+//We can now call this function with any function that matches the type:
+
+printIt([1, 2, 3, 4], squareItAgain)
+
+//We can also define the function inline:
+
+printIt([1, 2, 3, 4], function (value) {
+  return value * value
+})
+
+//We can also use the arrow style to define the function inline:
+
+printIt([1, 2, 3, 4], (value) => value * value)
