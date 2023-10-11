@@ -614,3 +614,49 @@ printIt([1, 2, 3, 4], function (value) {
 //We can also use the arrow style to define the function inline:
 
 printIt([1, 2, 3, 4], (value) => value * value)
+
+//********************************/
+
+//Rest Parameters
+//A function can be called with any number of arguments, no matter how it is defined.
+//We can use the rest operator to capture any number of arguments in a function.
+//The rest operator is three dots: ...
+//The rest operator must be the last argument in the function definition.
+//The rest operator collects all remaining arguments into an array.
+//For example, the following function returns the sum of all its arguments:
+
+function sum(...args: number[]) {
+  let sum = 0
+  for (const arg of args) {
+    sum += arg
+  }
+  return sum
+}
+console.log(sum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
+
+function GetInfo(info: string = 'Happy') {
+  console.log(info)
+}
+
+GetInfo('Very Happy')
+
+let getNames = function (FirstName: string, LastName: string) {
+  return FirstName + ' ' + LastName
+}
+console.log(getNames('Mila', 'Scardigno'))
+
+//arrow function
+let getNamesArrow = (FirstName: string, LastName: string) => {
+  return FirstName + ' ' + LastName
+}
+console.log(getNamesArrow('Mila', 'Scardigno'))
+
+let studentName = function (lName: string, FirstName: string) {
+  return FirstName + ' ' + lName
+}
+console.log(studentName('Mila', 'Scardigno'))
+
+let studentFullName = (lName: string, FirstName: string) => {
+  return FirstName + ' ' + lName
+}
+console.log(studentFullName('Mila', 'Scardigno'))
