@@ -1,5 +1,22 @@
 import './style.css'
 
+//Enums in JS
+// var LanguageKnown;
+// (function (LanguageKnown) {
+//   LanguageKnown[(LanguageKnown['English'] = 0)] = 'English'
+//   LanguageKnown[(LanguageKnown['Spanish'] = 1)] = 'Spanish'
+//   LanguageKnown[(LanguageKnown['Italian'] = 2)] = 'Italian'
+// })(LanguageKnown || (LanguageKnown = {}))
+// export { LanguageKnown }
+
+//Enums in TypeScript
+enum LanguageKnown {
+  English,
+  Spanish,
+  Italian,
+}
+export { LanguageKnown }
+
 // : string
 //
 // ^^^^ this is Typescript specific, it is not valid JS
