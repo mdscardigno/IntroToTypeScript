@@ -53,8 +53,9 @@ differentThings.push('Tim')*/ //arrays are mutable and can be changed even if th
 
 //explicitly typed array
 /*let studentName: string = 'Mary'
-let studentNames: string[] = ['Mary', 'John', 'Jane']
-let studentScores: number[] = [98, 100, 78, 99, 100]*/
+let studentNames: string[] = ['Mary', 'John', 'Jane']*/
+let studentScores: number[] = [98, 100, 78, 99, 100]
+console.log('student scores', studentScores)
 //to be continued on 1:31:15
 //Undefined Variables
 //RunJS tool
@@ -677,3 +678,99 @@ let studentFullName = (lName: string, FirstName: string) => {
   return FirstName + ' ' + lName
 }
 console.log(studentFullName('Mila', 'Scardigno'))
+
+const employees: string[] = [] //explicitly typed array
+employees[0] = 'Mary'
+employees[1] = 'Bob'
+employees[2] = 'Alice'
+employees[3] = 'Frank'
+employees[23] = 'Susan'
+console.log(employees)
+console.log('employee 10', employees[10])
+const betterEmployees: string[] = ['Mary', 'Bob', 'Alice', 'Frank']
+betterEmployees.push('Susan')
+console.log('better employees', betterEmployees)
+//look at the different array methods
+
+const cantChangeTheseValues: ReadonlyArray<number> = [42, 100, 52]
+//cantChangeTheseValues[0] = 100 //this is an error
+//cantChangeTheseValues.push(100) //this is an error
+//cantChangeTheseValues.pop() //this is an error
+//cantChangeTheseValues.shift() //this is an error
+//cantChangeTheseValues.unshift(100) //this is an error
+//cantChangeTheseValues.splice(0, 1) //this is an error
+//cantChangeTheseValues.sort() //this is an error
+//cantChangeTheseValues.reverse() //this is an error
+//cantChangeTheseValues.fill(100) //this is an error
+//cantChangeTheseValues.copyWithin(0, 1) //this is an error
+//cantChangeTheseValues.concat(100) //this is an error
+//cantChangeTheseValues.join() //this is an error
+//cantChangeTheseValues.slice() //this is an error
+//cantChangeTheseValues.toString() //this is an error because it is a read only array
+//cantChangeTheseValues.toLocaleString() //this is an error
+//cantChangeTheseValues.indexOf(42) //this is an error
+//cantChangeTheseValues.lastIndexOf(42) //this is an error
+//cantChangeTheseValues.includes(42) //this is an error
+//cantChangeTheseValues.entries() //this is an error
+//cantChangeTheseValues.keys() //this is an error
+//cantChangeTheseValues.values() //this is an error
+//cantChangeTheseValues.forEach() //this is an error
+//cantChangeTheseValues.filter() //this is an error
+//cantChangeTheseValues.map() //this is an error
+//cantChangeTheseValues.reduce() //this is an error
+//cantChangeTheseValues.reduceRight() //this is an error
+//cantChangeTheseValues.some() //this is an error
+//cantChangeTheseValues.every() //this is an error
+//cantChangeTheseValues.find() //this is an error
+//cantChangeTheseValues.findIndex() //this is an error
+
+//when we run npm run build it will create a dist folder
+//the dist folder will have a main.js file
+//this is the transpiled code
+//this is the code that the browser will run
+//the browser does not know what typescript is
+//the browser only knows javascript
+//the browser does not know what typescript is
+
+//tsc means typescript compiler
+//tsc -w means watch
+//tsc -w -p . means watch the current folder
+//tsc -w -p . means watch the current folder and all subfolders
+//tsc -w -p . means watch the current folder and all subfolders and all files
+//tsc -w -p . means watch the current folder and all subfolders and all files and compile them
+//tsc -w -p . means watch the current folder and all subfolders and all files and compile them and put them in the dist folder
+
+//we can also do this
+//npm run build
+//npm run build:watch
+//npm run build:watch:dev
+//npm run build:watch:prod
+
+//tsc && vite build means only run vite build if tsc is successful
+
+//we could do npm run build without tsc but it is not recommended
+
+//ITERATING ARRAYS
+
+const someColors = ['red', 'blue', 'green', 'yellow']
+//we use let instead of const because we are changing the value of the variable with color = color + 1 or color++
+// for (let color = 0; color < someColors.length; color++) {
+//   console.log(someColors[color])
+// }
+
+//in Ruby - happy developers - we would do this
+//go to terminal and type irb
+//then
+//colors = %w{red blue green yellow} - this is an array of strings
+//colors = %w{these words become elements in the array} - this is an array of strings but it doesnt work when having pairs of words
+// for (const colors = ['red', 'blue', 'green', 'yellow']; colors.length; ) {
+//   console.log(colors)
+// }
+
+const moreAndMoreColors = ['red', 'blue', 'green', 'yellow']
+// moreAndMoreColors.forEach(function (color) {
+//   console.log('moreAndMoreColors', color)
+// })
+
+//we can also use the arrow function
+// moreAndMoreColors.forEach((color) => console.log('moreAndMoreColors', color))
