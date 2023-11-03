@@ -754,9 +754,9 @@ const cantChangeTheseValues: ReadonlyArray<number> = [42, 100, 52]
 
 const someColors = ['red', 'blue', 'green', 'yellow']
 //we use let instead of const because we are changing the value of the variable with color = color + 1 or color++
-// for (let color = 0; color < someColors.length; color++) {
-//   console.log(someColors[color])
-// }
+for (let color = 0; color < someColors.length; color++) {
+  console.log(someColors[color])
+}
 
 //in Ruby - happy developers - we would do this
 //go to terminal and type irb
@@ -768,9 +768,11 @@ const someColors = ['red', 'blue', 'green', 'yellow']
 // }
 
 const moreAndMoreColors = ['red', 'blue', 'green', 'yellow']
-// moreAndMoreColors.forEach(function (color) {
-//   console.log('moreAndMoreColors', color)
-// })
+moreAndMoreColors.forEach(function (color) {
+  console.log('moreAndMoreColors', color)
+})
 
 //we can also use the arrow function
-// moreAndMoreColors.forEach((color) => console.log('moreAndMoreColors', color))
+moreAndMoreColors.forEach((color) =>
+  console.log('moreAndMoreColors with ForEach', color)
+)
