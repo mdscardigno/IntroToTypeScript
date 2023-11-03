@@ -686,8 +686,10 @@ employees[2] = 'Alice'
 employees[3] = 'Frank'
 employees[23] = 'Susan'
 console.log(employees)
+
 console.log('employee 10', employees[10])
 const betterEmployees: string[] = ['Mary', 'Bob', 'Alice', 'Frank']
+
 betterEmployees.push('Susan')
 console.log('better employees', betterEmployees)
 //look at the different array methods
